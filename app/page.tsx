@@ -8,8 +8,8 @@ export default function Home() {
           className="dark:invert"
           src="/header1.0.png"
           alt="phs clubs header"
-          width={1800}
-          height={500}
+          width={1500}
+          height={400}
           priority
         />
         <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
