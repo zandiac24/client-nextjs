@@ -1,12 +1,15 @@
-import SideNav from '@/app/ui/sidenav';
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex h-screen">
+      {/* Sidebar with just static content */}
+      <div className="w-64 bg-red-500 text-white p-4">
+        <p>Hello from sidebar</p>
+      </div>
 
-export default function Layout({children}: {children:React.ReactNode}) {
-    return(
-        <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
-            <div className="w-full flex-none md:w-64">
-                <SideNav />
-            </div>
-            <div className="flex-grow p-6 md:overflow-y-auto md:p-12">{children}</div>
-        </div>
-    );
+      {/* Main content */}
+      <main className="flex-1 bg-white p-8">
+        {children}
+      </main>
+    </div>
+  );
 }

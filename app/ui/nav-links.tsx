@@ -1,28 +1,33 @@
-// Map of links to display in the side navigation.
-// Depending on the size of the application, this would be stored in a database.
+'use client';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import clsx from 'clsx';
+
 const links = [
-  { name: 'Home', href: '/dashboard'},
-  {
-    name: 'Create a new club',
-    href: '/dashboard/application',
-  },
-  { name: 'Join a club', href: '/dashboard/registration'},
+  { name: 'Join a Club', href: '/dashboard/registration' },
+  { name: 'Create a New Club', href: '/dashboard/application' },
 ];
 
 export default function NavLinks() {
+  const pathname = usePathname();
+
   return (
-    <>
-      {links.map((link) => {
-        return (
-          <a
-            key={link.name}
+    <ul className="space-y-2">
+      {links.map((link) => (
+        <li key={link.name}>
+          <Link
             href={link.href}
-            className="flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3"
+            className={clsx(
+              'block rounded px-4 py-2 text-sm font-medium',
+              pathname === link.href
+                ? 'bg-blue-600 text-white'
+                : 'text-gray-700 hover:bg-blue-100'
+            )}
           >
-            <p className="hidden md:block">{link.name}</p>
-          </a>
-        );
-      })}
-    </>
+            {link.name}
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 }
